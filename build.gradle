@@ -11,7 +11,10 @@ allprojects {
 
     repositories {
         mavenLocal()
-        mavenCentral()
+        maven {
+            url "https://repo1.maven.org/maven2"
+        }
+//         mavenCentral()
     }
 }
 
@@ -29,8 +32,8 @@ configure(javaProjects) {
 configure(coreModuleProjects) {
     // Gives better names in structure101 jar diagram
     sourceSets.main.output.classesDir = new File(buildDir, "classes/" + project.name.substring("spring-security".length() + 1))
-    apply plugin: 'bundlor'
-    bundlor.expansions = bundlorProperties
+//     apply plugin: 'bundlor'
+//     bundlor.expansions = bundlorProperties
     apply from: "$rootDir/gradle/maven-deployment.gradle"
     apply plugin: 'emma'
 }
